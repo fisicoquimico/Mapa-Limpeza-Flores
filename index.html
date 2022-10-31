@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        h2{ 
+           color: blue;
+          } 
+        </style>
+        <title>Mapa Limpeza Flores</title>
+        <link href = "images/logo_bartira.ico" rel="icon"
+    </head>
+    <body>
+        <h1>Mapa Limpeza<strong>Flores</strong></h1>
+        <h2>Imagem:Setembro 2022</h2>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/AREA_LIMPEZA_AJUSTADA_CAR_2.js"></script>
+        <script src="data/FLORES_3.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[-6.637996091705814,-48.274865468911955],[-6.610232535375055,-48.23064551078675]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_L150749E0986N_0');
+        map.getPane('pane_L150749E0986N_0').style.zIndex = 400;
+        var img_L150749E0986N_0 = 'data/L150749E0986N_0.png';
+        var img_bounds_L150749E0986N_0 = [[-6.6646075611952655,-48.33984374322991],[-6.489983331717238,-48.16406249325431]];
+        var layer_L150749E0986N_0 = new L.imageOverlay(img_L150749E0986N_0,
+                                              img_bounds_L150749E0986N_0,
+                                              {pane: 'pane_L150749E0986N_0'});
+        bounds_group.addLayer(layer_L150749E0986N_0);
+        map.addLayer(layer_L150749E0986N_0);
+        map.createPane('pane_L150749E0985N_1');
+        map.getPane('pane_L150749E0985N_1').style.zIndex = 401;
+        var img_L150749E0985N_1 = 'data/L150749E0985N_1.png';
+        var img_bounds_L150749E0985N_1 = [[-6.839169625341622,-48.33984374322991],[-6.6646075611952655,-48.16406249325431]];
+        var layer_L150749E0985N_1 = new L.imageOverlay(img_L150749E0985N_1,
+                                              img_bounds_L150749E0985N_1,
+                                              {pane: 'pane_L150749E0985N_1'});
+        bounds_group.addLayer(layer_L150749E0985N_1);
+        map.addLayer(layer_L150749E0985N_1);
+        function pop_AREA_LIMPEZA_AJUSTADA_CAR_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AREA_HA'] !== null ? autolinker.link(feature.properties['AREA_HA'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_AREA_LIMPEZA_AJUSTADA_CAR_2_0() {
+            return {
+                pane: 'pane_AREA_LIMPEZA_AJUSTADA_CAR_2',
+                opacity: 1,
+                color: 'rgba(0,12,255,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_AREA_LIMPEZA_AJUSTADA_CAR_2');
+        map.getPane('pane_AREA_LIMPEZA_AJUSTADA_CAR_2').style.zIndex = 402;
+        map.getPane('pane_AREA_LIMPEZA_AJUSTADA_CAR_2').style['mix-blend-mode'] = 'normal';
+        var layer_AREA_LIMPEZA_AJUSTADA_CAR_2 = new L.geoJson(json_AREA_LIMPEZA_AJUSTADA_CAR_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_AREA_LIMPEZA_AJUSTADA_CAR_2',
+            layerName: 'layer_AREA_LIMPEZA_AJUSTADA_CAR_2',
+            pane: 'pane_AREA_LIMPEZA_AJUSTADA_CAR_2',
+            onEachFeature: pop_AREA_LIMPEZA_AJUSTADA_CAR_2,
+            style: style_AREA_LIMPEZA_AJUSTADA_CAR_2_0,
+        });
+        bounds_group.addLayer(layer_AREA_LIMPEZA_AJUSTADA_CAR_2);
+        map.addLayer(layer_AREA_LIMPEZA_AJUSTADA_CAR_2);
+        function pop_FLORES_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? autolinker.link(feature.properties['Name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['description'] !== null ? autolinker.link(feature.properties['description'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['timestamp'] !== null ? autolinker.link(feature.properties['timestamp'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['begin'] !== null ? autolinker.link(feature.properties['begin'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['end'] !== null ? autolinker.link(feature.properties['end'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['altitudeMode'] !== null ? autolinker.link(feature.properties['altitudeMode'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['tessellate'] !== null ? autolinker.link(feature.properties['tessellate'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['extrude'] !== null ? autolinker.link(feature.properties['extrude'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['visibility'] !== null ? autolinker.link(feature.properties['visibility'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['drawOrder'] !== null ? autolinker.link(feature.properties['drawOrder'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['icon'] !== null ? autolinker.link(feature.properties['icon'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['num_proces'] !== null ? autolinker.link(feature.properties['num_proces'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['sr'] !== null ? autolinker.link(feature.properties['sr'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['num_certif'] !== null ? autolinker.link(feature.properties['num_certif'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['data_certi'] !== null ? autolinker.link(feature.properties['data_certi'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['qtd_area_p'] !== null ? autolinker.link(feature.properties['qtd_area_p'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['cod_profis'] !== null ? autolinker.link(feature.properties['cod_profis'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['cod_imovel'] !== null ? autolinker.link(feature.properties['cod_imovel'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['nome_imove'] !== null ? autolinker.link(feature.properties['nome_imove'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['uf_municip'] !== null ? autolinker.link(feature.properties['uf_municip'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_FLORES_3_0() {
+            return {
+                pane: 'pane_FLORES_3',
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_FLORES_3');
+        map.getPane('pane_FLORES_3').style.zIndex = 403;
+        map.getPane('pane_FLORES_3').style['mix-blend-mode'] = 'normal';
+        var layer_FLORES_3 = new L.geoJson(json_FLORES_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_FLORES_3',
+            layerName: 'layer_FLORES_3',
+            pane: 'pane_FLORES_3',
+            onEachFeature: pop_FLORES_3,
+            style: style_FLORES_3_0,
+        });
+        bounds_group.addLayer(layer_FLORES_3);
+        map.addLayer(layer_FLORES_3);
+        setBounds();
+        L.ImageOverlay.include({
+            getBounds: function () {
+                return this._bounds;
+            }
+        });
+        </script>
+    </body>
+</html>
